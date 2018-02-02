@@ -29,6 +29,15 @@ function loadNumber() {
 function setBounds() {
   document.getElementById("low").textContent = low;
   document.getElementById("high").textContent = high;
+  setBarBounds();
+}
+
+// Sets the bar's changing bounds
+function setBarBounds() {
+  // document.getElementById("lowshow").textContent=low;
+  // document.getElementById("highshow").textContent=high;
+  document.getElementById("barGuessRange").style.marginLeft = `${low*10}px`;
+  document.getElementById("barGuessRange").style.marginRight = `${(100-high)*10}px`;
 }
 
 // Sets the initial text
@@ -42,19 +51,17 @@ function setText() {
 
 // Runs when player makes a guess
 function makeGuess(guess) {
-  // if (typeof(guess) != 'int' ) {
-  //   alert('Please Enter a number');
-  if ((guess < 0) || (guess > 100)) {
-    alert('Not in range');
+  if ((guess < low) || (guess > high)) {
+    alert('Number not in range');
   } else if (guess < target) {
-    alert('TOO LOW');
     tooLow(guess);
   } else if (guess > target) {
-    alert('TOO HIGH');
     tooHigh(guess);
-  } else {
+  } else if (guess == target) {
     alert('CORRECT');
     endGame(guess);
+  } else {
+    alert('Please Enter an actual number');
   }
 }
 
@@ -68,12 +75,14 @@ function endGame(guess) {
 
 // Runs when player's guess is too low
 function tooLow(guess) {
+  document.getElementById("response").textContent = `${guess} was too low! Try again!\n`;
   low = guess;
   setBounds();
 }
 
 // Runs when player's guess is too high
 function tooHigh(guess) {
+  document.getElementById("response").textContent = `${guess} was too high! Try again!\n`;
   high = guess;
   setBounds();
 }

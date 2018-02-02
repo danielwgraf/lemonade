@@ -7,7 +7,7 @@
 
 .barBackground {
   height: 50px;
-  width: 800px;
+  width: 1000px;
   background-color: grey;
   display: flex;
   justify-content: center;
@@ -15,14 +15,11 @@
 }
 
 .barGuessRange {
-  /* height: 50px; */
-  /* width: 40px; */
-  /* background-color: green;
-  border-color: green; */
-  border-top: 25px solid green;
-  border-bottom: 25px solid green;
-  border-left: 100px solid green;
-  border-right: 100px solid green;
+  height: 50px;
+  width: 1000px;
+  background-color: green;
+  margin-left: 0px;
+  margin-right: 0px;
 }
 
 /* Initial Reset Text */
