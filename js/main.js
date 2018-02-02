@@ -4,11 +4,15 @@
 // Target Number to be guessed
 var target;
 // Low barrier
-var low = 0;
+var low
 // High barrier
-var high = 100;
+var high;
 
 function startGame() {
+  // Initial Bounds
+  low = 0;
+  high = 100;
+  // Start/Clean functions
   loadNumber();
   setBounds();
   setText();

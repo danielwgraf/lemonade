@@ -1,3 +1,31 @@
+/* Bar Styling */
+#trackingBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.barBackground {
+  height: 50px;
+  width: 800px;
+  background-color: grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.barGuessRange {
+  /* height: 50px; */
+  /* width: 40px; */
+  /* background-color: green;
+  border-color: green; */
+  border-top: 25px solid green;
+  border-bottom: 25px solid green;
+  border-left: 100px solid green;
+  border-right: 100px solid green;
+}
+
+/* Initial Reset Text */
 #reset {
   display: none;
 }
