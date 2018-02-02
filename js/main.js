@@ -8,6 +8,12 @@ var low = 0;
 // High barrier
 var high = 100;
 
+function startGame() {
+  loadNumber();
+  setBounds();
+  setText();
+}
+
 // Random number generator
 function loadNumber() {
   // Multiplied by
@@ -15,15 +21,22 @@ function loadNumber() {
   document.getElementById("target").textContent = target;
 }
 
+// Sets the initial bounds
 function setBounds() {
-  document.getElementById("low").textContent = 0;
-  document.getElementById("high").textContent = 100;
+  document.getElementById("low").textContent = low;
+  document.getElementById("high").textContent = high;
 }
 
+// Sets the initial text
 function setText() {
-
+    document.getElementById("response").textContent = '';
+    document.getElementById("guess").value = '';
+    document.getElementById("question").style.display = 'block';
+    document.getElementById("guessForm").style.display = 'block';
+    document.getElementById("reset").style.display = 'none';
 }
 
+// Runs when player makes a guess
 function makeGuess(guess) {
   // if (typeof(guess) != 'int' ) {
   //   alert('Please Enter a number');
@@ -31,14 +44,17 @@ function makeGuess(guess) {
     alert('Not in range');
   } else if (guess < target) {
     alert('TOO LOW');
+    tooLow(guess);
   } else if (guess > target) {
     alert('TOO HIGH');
+    tooHigh(guess);
   } else {
     alert('CORRECT');
     endGame(guess);
   }
 }
 
+// Runs when player wins
 function endGame(guess) {
   document.getElementById("response").textContent = `You're correct! The answer was ${target}`;
   document.getElementById("question").style.display = 'none';
@@ -46,16 +62,14 @@ function endGame(guess) {
   document.getElementById("reset").style.display = 'block';
 }
 
-function tooLow() {
-
-}
-
-function tooHigh() {
-
-}
-
-function startGame() {
-  loadNumber();
+// Runs when player's guess is too low
+function tooLow(guess) {
+  low = guess;
   setBounds();
-  setText();
+}
+
+// Runs when player's guess is too high
+function tooHigh(guess) {
+  high = guess;
+  setBounds();
 }
