@@ -4,7 +4,7 @@
 // Target Number to be guessed
 var target;
 // Low barrier
-var low
+var low;
 // High barrier
 var high;
 
@@ -20,9 +20,8 @@ function startGame() {
 
 // Random number generator
 function loadNumber() {
-  // Multiplied by
+  // Multiplied by 101 to ensure inclusion of 100
   target = Math.floor(Math.random() * 101);
-  document.getElementById("target").textContent = target;
 }
 
 // Sets the initial bounds
@@ -34,8 +33,6 @@ function setBounds() {
 
 // Sets the bar's changing bounds
 function setBarBounds() {
-  // document.getElementById("lowshow").textContent=low;
-  // document.getElementById("highshow").textContent=high;
   document.getElementById("barGuessRange").style.marginLeft = `${low*10}px`;
   document.getElementById("barGuessRange").style.marginRight = `${(100-high)*10}px`;
 }
@@ -51,14 +48,15 @@ function setText() {
 
 // Runs when player makes a guess
 function makeGuess(guess) {
-  if ((guess < low) || (guess > high)) {
+  if (guess==''){
+    alert('Please enter a number');
+  } else if ((guess < low) || (guess > high)) {
     alert('Number not in range');
   } else if (guess < target) {
     tooLow(guess);
   } else if (guess > target) {
     tooHigh(guess);
   } else if (guess == target) {
-    alert('CORRECT');
     endGame(guess);
   } else {
     alert('Please Enter an actual number');
